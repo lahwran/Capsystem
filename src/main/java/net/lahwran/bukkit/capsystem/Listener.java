@@ -1,10 +1,13 @@
 package net.lahwran.bukkit.capsystem;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 
-public class Listener extends PlayerListener
+public class Listener extends PlayerListener implements CommandExecutor
 {
 
     private static final String colorchar = "\u00a7";
@@ -29,8 +32,28 @@ public class Listener extends PlayerListener
         return newstring.toString();
     }
 
+    @Override
     public void onPlayerJoin(PlayerJoinEvent event) {
+        //Ask client to tell about themselves
         Player player = event.getPlayer();
         player.sendRawMessage(prefix + colorEncode(Main.protocolVersion));
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] split)
+    {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("You're not a player!");
+            return true;
+        }
+        if (command.getName() == "@cap")
+        {
+            
+        }
+        else if (command.getName() == "@comm")
+        {
+            
+        }
+        return true;
     }
 }
