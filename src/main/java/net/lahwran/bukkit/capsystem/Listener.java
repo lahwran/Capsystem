@@ -1,5 +1,7 @@
 package net.lahwran.bukkit.capsystem;
 
+import net.lahwran.capsystem.Capsystem;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -46,11 +48,15 @@ public class Listener extends PlayerListener implements CommandExecutor
             sender.sendMessage("You're not a player!");
             return true;
         }
-        if (command.getName() == "@cap")
+        System.out.print(command.getName());
+        if (command.getName().equals("@caps"))
         {
-            
+            for (String s:split)
+            {
+                Capsystem.addCap((Player)sender, s);
+            }
         }
-        else if (command.getName() == "@comm")
+        else if (command.getName().equals("@comm"))
         {
             
         }
