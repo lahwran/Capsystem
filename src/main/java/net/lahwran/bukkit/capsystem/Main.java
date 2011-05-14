@@ -8,12 +8,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
     public final Listener listener = new Listener(this);
-    public static final int protocolVersion = 0;
 
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvent(Event.Type.PLAYER_JOIN, listener, Priority.Lowest, this);
         getCommand("@caps").setExecutor(listener);
+        getCommand("@cap").setExecutor(listener);
     }
     public void onDisable() {}
 

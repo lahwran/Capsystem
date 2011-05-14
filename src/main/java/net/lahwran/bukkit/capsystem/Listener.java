@@ -1,5 +1,6 @@
 package net.lahwran.bukkit.capsystem;
 
+import net.lahwran.capsystem.Capability;
 import net.lahwran.capsystem.Capsystem;
 
 import org.bukkit.command.Command;
@@ -38,7 +39,7 @@ public class Listener extends PlayerListener implements CommandExecutor
     public void onPlayerJoin(PlayerJoinEvent event) {
         //Ask client to tell about themselves
         Player player = event.getPlayer();
-        player.sendRawMessage(prefix + colorEncode(Main.protocolVersion));
+        player.sendRawMessage(prefix + colorEncode(Capsystem.protocolVersion));
     }
 
     @Override
@@ -54,6 +55,13 @@ public class Listener extends PlayerListener implements CommandExecutor
             for (String s:split)
             {
                 Capsystem.addCap((Player)sender, s);
+            }
+        }
+        else if (command.getName().equals("@cap"))
+        {
+            if (split.length > 0 && split[0].equals("done"))
+            {
+                Capsystem.sendServerCaps(prefix, (Player)sender);
             }
         }
         else if (command.getName().equals("@comm"))
