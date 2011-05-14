@@ -27,13 +27,14 @@ public class Capsystem {
             if(toSend == null)
             {
                 toSend = new StringBuilder(prefix);
-                if (toSend.length() + curCap.length() > 100)
+                if (toSend.length() + curCap.length() > 60)
                     throw new RuntimeException("Impossibly long capability error");
                 toSend.append(curCap);
                 continue;
             }
-            else if(toSend.length() + curCap.length() + 1 > 100)
+            else if(toSend.length() + curCap.length() + 1 > 60)
             {
+                System.out.println("Sending "+toSend.length()+": "+toSend.toString());
                 p.sendRawMessage(toSend.toString());
                 toSend=null;
             }
@@ -43,11 +44,20 @@ public class Capsystem {
             }
         }
         if (toSend != null)
+        {
+            System.out.println("Sending: "+toSend.toString());
             p.sendRawMessage(toSend.toString());
+        }
     }
 
     public static void registerCap(Capability c)
     {
+        serverCaplist.capabilities.put(c.type+c.name, c);
+    }
+
+    public static void registerCap(String strc)
+    {
+        Capability c = new Capability(strc);
         serverCaplist.capabilities.put(c.type+c.name, c);
     }
 
@@ -81,7 +91,7 @@ public class Capsystem {
         return capabilities.get(p);
     }
 
-    private static final Pattern cappattern = Pattern.compile("^(.)([^:]*)(.*)?$");
+    public static final Pattern cappattern = Pattern.compile("^(.)([^:]*):?(.*)?$");
     public static void addCap(Player p, String cap)
     {
         Caplist list =  capabilities.get(p);

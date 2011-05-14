@@ -3,6 +3,9 @@
  */
 package net.lahwran.capsystem;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author lahwran
  *
@@ -16,6 +19,16 @@ public class Capability {
         this.type = type;
         this.name = name;
         this.args = args;
+    }
+
+    public Capability(String cap)
+    {
+        Matcher match = Capsystem.cappattern.matcher(cap);
+        if (!match.matches())
+            throw new RuntimeException("String is not a capability: "+cap);
+        this.type = match.group(1);
+        this.name = match.group(2);
+        this.args = match.group(3);
     }
 
     @Override
