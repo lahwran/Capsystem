@@ -337,8 +337,15 @@ public class mg extends se {
 
     public void a(of of1) {
         //TODO: update
-        if(!ChatProcessor.processChat(of1.a) && !ChatHook.runhooks(of1.a))
+        if(ChatProcessor.processChat(of1.a))
+            System.out.println("chatmsg (cap): "+of1.a);
+        else if (ChatHook.runhooks(of1.a))
+            System.out.println("chatmsg (hook): "+of1.a);
+        else
+        {
+            System.out.println("chatmsg: "+of1.a);
             e.u.a(of1.a);
+        }
     }
 
     public void a(mq mq1) {
