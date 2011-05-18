@@ -55,7 +55,7 @@ public class Capsystem {
             System.out.println("Sending: "+toSend.toString());
             server.send(toSend.toString());
         }
-        server.send("/@caps done");
+        server.send("/@cap done");
     }
 
     public static void registerCap(Capability c)
