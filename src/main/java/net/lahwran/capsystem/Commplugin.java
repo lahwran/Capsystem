@@ -91,7 +91,7 @@ public class Commplugin {
         int msgcount = (outmessage.length()/maxlength) + 1;
         for(int i=0; i < msgcount; i++)
         {
-            StringBuilder thismessage = new StringBuilder(Capsystem.commprefix);
+            StringBuilder thismessage = new StringBuilder(Commsystem.commprefix);
             thismessage.append(identification);
             if (i>0)
                 thismessage.append(Commsystem.fieldSeparator);

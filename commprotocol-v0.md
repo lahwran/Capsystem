@@ -3,7 +3,7 @@ Communication system
 
 This protocol describes a system for communicating arbitrary data. This version, version 0, uses chat entirely, but future versions may be able to transparently switch to a special packet.
 
-The capability for this version of commsystem is "comm:v0".
+The capability for this version of commsystem is "+comm:v0".
 
 Message format
 --------------

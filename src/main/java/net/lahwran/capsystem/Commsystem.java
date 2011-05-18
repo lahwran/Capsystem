@@ -36,4 +36,10 @@ public class Commsystem {
             throw new IllegalArgumentException("Got a message for Commplugin '"+identification+"', no such plugin ("+p.getName()+" data: '"+data+"')");
         plugin.processMessage(p, data);
     }
+
+    public static final String commprefix = Capsystem.colorchar + "0" + Capsystem.colorchar + "0";
+    
+    static {
+        Capsystem.registerCap("+comm:v0");
+    }
 }
