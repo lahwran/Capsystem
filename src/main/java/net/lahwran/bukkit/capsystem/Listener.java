@@ -2,6 +2,7 @@ package net.lahwran.bukkit.capsystem;
 
 import net.lahwran.capsystem.Capability;
 import net.lahwran.capsystem.Capsystem;
+import net.lahwran.capsystem.Commsystem;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,10 +13,6 @@ import org.bukkit.event.player.PlayerListener;
 
 public class Listener extends PlayerListener implements CommandExecutor
 {
-
-    private static final String colorchar = "\u00a7";
-    private static final String prefix = colorchar + "0" + colorchar + "0" + 
-                                         colorchar + "0" + colorchar + "0";
 
     public final Main plugin;
 
@@ -30,7 +27,7 @@ public class Listener extends PlayerListener implements CommandExecutor
         StringBuilder newstring = new StringBuilder();
         for(int i=0; i<hex.length(); i++)
         {
-            newstring.append(colorchar+hex.substring(i, i+1));
+            newstring.append(Capsystem.colorchar+hex.substring(i, i+1));
         }
         return newstring.toString();
     }
@@ -39,7 +36,7 @@ public class Listener extends PlayerListener implements CommandExecutor
     public void onPlayerJoin(PlayerJoinEvent event) {
         //Ask client to tell about themselves
         Player player = event.getPlayer();
-        player.sendRawMessage(prefix + colorEncode(Capsystem.protocolVersion));
+        player.sendRawMessage(Capsystem.colorchar + colorEncode(Capsystem.protocolVersion));
     }
 
     @Override
@@ -61,12 +58,21 @@ public class Listener extends PlayerListener implements CommandExecutor
         {
             if (split.length > 0 && split[0].equals("done"))
             {
-                Capsystem.sendServerCaps(prefix, (Player)sender);
+                Capsystem.sendServerCaps(Capsystem.prefix, (Player)sender);
             }
         }
         else if (command.getName().equals("@comm"))
         {
-            
+            StringBuilder full = new StringBuilder();
+            for(int i=0; i<split.length; i++)
+            {
+                if (i>0)
+                {
+                    full.append(" "); //TODO: if it does things to multiple spaces, this will silently mangle!!!
+                }
+                full.append(split[i]);
+            }
+            Commsystem.dispatch((Player)sender, full.toString());
         }
         return true;
     }

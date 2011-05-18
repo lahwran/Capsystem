@@ -17,6 +17,7 @@ public class Main extends JavaPlugin {
         pm.registerEvent(Event.Type.PLAYER_JOIN, listener, Priority.Lowest, this);
         getCommand("@caps").setExecutor(listener);
         getCommand("@cap").setExecutor(listener);
+        getCommand("@comm").setExecutor(listener);
     }
     public void onDisable() {}
 

@@ -24,7 +24,7 @@ Data types
 Data types required by this version of commsystem are:
 
 - 'b': binary, encoded as base64
-- 't': plaintext
+- 't': plaintext (may not contain "×")
 - 'i': integer, sent as plaintext
 - 'j': integer, sent as base64 
 - 'f': floatingpoint, sent as plaintext
@@ -32,3 +32,5 @@ Data types required by this version of commsystem are:
 - 'b': boolean, anything other than '0' is true
 
 note: i/j and f/g should be indistinguishable to the addon calling commsystem and should be chosen by the commsystem as needed. 'i' and 'f' are for debugging purposes.
+TODO: wrapping assumes ordered messages
+TODO: unlimited wrapping is DOS attack vector

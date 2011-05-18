@@ -17,6 +17,11 @@ public class Capsystem {
     public static final int protocolVersion = 0;
     private static final HashMap<Player, Caplist> capabilities = new HashMap<Player, Caplist>();
     private static final Caplist serverCaplist = new Caplist(protocolVersion);
+    public static final int maxLength=60;
+    public static final String colorchar = "\u00a7";
+    public static final String prefix = colorchar + "0" + colorchar + "0" + 
+                                         colorchar + "0" + colorchar + "0";
+    public static final String commprefix = colorchar + "0" + colorchar + "0";
 
     public static void sendServerCaps(String prefix, Player p)
     {
@@ -27,12 +32,12 @@ public class Capsystem {
             if(toSend == null)
             {
                 toSend = new StringBuilder(prefix);
-                if (toSend.length() + curCap.length() > 60)
+                if (toSend.length() + curCap.length() > maxLength)
                     throw new RuntimeException("Impossibly long capability error");
                 toSend.append(curCap);
                 continue;
             }
-            else if(toSend.length() + curCap.length() + 1 > 60)
+            else if(toSend.length() + curCap.length() + 1 > maxLength)
             {
                 System.out.println("Sending "+toSend.length()+": "+toSend.toString());
                 p.sendRawMessage(toSend.toString());
