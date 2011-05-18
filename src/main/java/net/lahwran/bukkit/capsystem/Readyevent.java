@@ -3,8 +3,6 @@
  */
 package net.lahwran.bukkit.capsystem;
 
-import net.lahwran.capsystem.commdata.Commdata;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
@@ -16,7 +14,6 @@ import org.bukkit.event.Event;
 @SuppressWarnings("serial")
 public final class Readyevent extends Event {
     private final Player player;
-    @SuppressWarnings("unchecked")
     protected Readyevent(Player p)
     {
         super("CommReadyevent");
