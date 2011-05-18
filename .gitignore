@@ -1,8 +1,8 @@
 # Copied from craftbukkit
-# Eclipse stuff
-/.classpath
-/.project
-/.settings
+# Eclipse stuff - we want this left alone
+#/.classpath
+#/.project
+#/.settings
 
 # netbeans
 /nbproject
