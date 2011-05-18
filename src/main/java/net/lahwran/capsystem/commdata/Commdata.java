@@ -11,6 +11,7 @@ public abstract class Commdata<T> {
     public abstract T decoded();
     public abstract String encoded();
     public abstract String typeChar();
+    @SuppressWarnings("unchecked")
     public static Commdata selectDecoder(String field)
     {
         String type = field.substring(0, 1);

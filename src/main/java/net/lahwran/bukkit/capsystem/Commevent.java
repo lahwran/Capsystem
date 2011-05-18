@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.lahwran.capsystem;
+package net.lahwran.bukkit.capsystem;
 
 import net.lahwran.capsystem.commdata.Commdata;
 
@@ -13,13 +13,12 @@ import org.bukkit.event.Event;
  * @author lahwran
  *
  */
+@SuppressWarnings("serial")
 public final class Commevent extends Event {
+    @SuppressWarnings("unchecked")
     private final Commdata[] data;
     private final Player player;
-    /**
-     * @param p 
-     * @param name
-     */
+    @SuppressWarnings("unchecked")
     protected Commevent(Player p, Commdata[] data)
     {
         super("Commevent");
@@ -31,6 +30,7 @@ public final class Commevent extends Event {
     {
         return data.length;
     }
+    @SuppressWarnings("unchecked")
     public Commdata getData(int index)
     {
         return data[index];

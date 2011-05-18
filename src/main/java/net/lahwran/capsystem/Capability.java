@@ -4,7 +4,6 @@
 package net.lahwran.capsystem;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author lahwran
@@ -23,7 +22,7 @@ public class Capability {
 
     public Capability(String cap)
     {
-        Matcher match = Capsystem.cappattern.matcher(cap);
+        Matcher match = GenericCapsystem.cappattern.matcher(cap);
         if (!match.matches())
             throw new RuntimeException("String is not a capability: "+cap);
         this.type = match.group(1);

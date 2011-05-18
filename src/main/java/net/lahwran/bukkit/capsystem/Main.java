@@ -1,9 +1,6 @@
 
 package net.lahwran.bukkit.capsystem;
 
-import net.lahwran.capsystem.Capability;
-import net.lahwran.capsystem.Capsystem;
-
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
