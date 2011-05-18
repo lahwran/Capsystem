@@ -37,8 +37,16 @@ public class Commsystem {
     }
 
     public static final String commprefix = "/@comm ";
-    
+
     static {
         Capsystem.registerCap("+comm:v0");
+    }
+
+    public static void _ready()
+    {
+        for(Commplugin p:plugins.values())
+        {
+            p._ready();
+        }
     }
 }

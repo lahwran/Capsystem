@@ -98,4 +98,9 @@ public class Commplugin {
             Capsystem.server.send(thismessage.toString());
         }
     }
+
+    public void _ready()
+    {
+        listener.onConnect();
+    }
 }

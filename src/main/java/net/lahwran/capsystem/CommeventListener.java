@@ -4,7 +4,7 @@
 package net.lahwran.capsystem;
 
 /**
- * Half-assed event listener thingy
+ * Half-assed listener/callback/hook/whatever thingy
  * @author lahwran
  *
  */

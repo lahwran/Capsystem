@@ -38,6 +38,10 @@ public class ChatProcessor {
             {
                 Capsystem._initCaps(colorDecode(chat));
             }
+            else if (chat.equals("done"))
+            {
+                Commsystem._ready();
+            }
             else
             {
                 String[] split = chat.split(" ");
