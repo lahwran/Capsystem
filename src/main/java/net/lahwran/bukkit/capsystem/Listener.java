@@ -36,7 +36,7 @@ public class Listener extends PlayerListener implements CommandExecutor
     public void onPlayerJoin(PlayerJoinEvent event) {
         //Ask client to tell about themselves
         Player player = event.getPlayer();
-        player.sendRawMessage(Capsystem.colorchar + colorEncode(Capsystem.protocolVersion));
+        player.sendRawMessage(Capsystem.prefix + colorEncode(Capsystem.protocolVersion));
     }
 
     @Override
