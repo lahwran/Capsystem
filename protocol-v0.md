@@ -25,6 +25,7 @@ Initialization is performed entirely via chat messages. It should as early as po
 - client >> server: '/@caps v[clientcapversion] [capabilities]' - capabilities are space seperated, but the message may not exceed 100 characters. if adding a capability would exceed the 100 characters, another message is sent. this is repeated until there are no capabilities left to send. for example '/@caps v0 +whatever +whatelse -removedcapability'
 - client >> server: '/@cap done' - indicates that the client is done sending capabilities.
 - client << server: '§0§0§0§0[capabilities]' - capabilities are space seperated, message wraps to 100 characters same as the client-to-server capability listing.
+- client << server: '§0§0§0§0done' - indicates that all capabilities are sent and the client may now begin acting on them
 
 Both ends are required to store the other's capabilities, so that this communication only needs to happen once. The any time the server sends the first packet of this communication, the handshaking occurs; However it is strongly recommended to initialize once, early on connection.
 [at this point both ends may proceed to do whatever they need to based on sent capabilities]

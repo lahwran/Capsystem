@@ -51,6 +51,7 @@ public class Capsystem {
             System.out.println("Sending: "+toSend.toString());
             p.sendRawMessage(toSend.toString());
         }
+        p.sendRawMessage(prefix+"done");
     }
 
     public static void registerCap(Capability c)
