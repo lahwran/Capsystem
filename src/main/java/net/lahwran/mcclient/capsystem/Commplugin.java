@@ -12,7 +12,7 @@ import net.lahwran.capsystem.commdata.Commdata;
  */
 public class Commplugin extends GenericCommplugin {
     StringBuilder messageBuffer;
-    private CommListener listener;
+    CommListener listener;
     
     public Commplugin(String identification, CommListener listener)
     {
@@ -39,12 +39,6 @@ public class Commplugin extends GenericCommplugin {
         {
             Capsystem.instance.server.send(line);
         }
-    }
-    
-    @Override
-    public void _ready()
-    {
-        listener.onConnect();
     }
 
     @Override

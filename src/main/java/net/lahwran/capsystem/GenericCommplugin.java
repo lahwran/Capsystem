@@ -21,7 +21,6 @@ public abstract class GenericCommplugin {
     protected abstract StringBuilder getMessageBuffer(Object bufferid);
     protected abstract StringBuilder makeMessageBuffer(Object bufferid);
     protected abstract void freeMessageBuffer(Object bufferid);
-    public abstract void _ready();
     protected abstract String getPrefix();
 
     protected String processMessage(String message, Object bufferid)

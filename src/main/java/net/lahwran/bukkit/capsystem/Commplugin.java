@@ -19,7 +19,7 @@ import org.bukkit.event.CustomEventListener;
 public class Commplugin extends GenericCommplugin {
 
     private final HashMap<Player, StringBuilder> messageBuffers = new HashMap<Player, StringBuilder>();
-    private final CustomEventListener listener;
+    final CustomEventListener listener;
 
     /**
      * @param identification
@@ -29,12 +29,6 @@ public class Commplugin extends GenericCommplugin {
     {
         this.identification = identification;
         this.listener = listener;
-    }
-
-    @Override
-    public void _ready()
-    {
-        
     }
 
     @Override

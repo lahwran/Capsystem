@@ -30,7 +30,7 @@ public class Commsystem extends GenericCommsystem{
     {
         for(GenericCommplugin p:instance.plugins.values())
         {
-            p._ready();
+            ((Commplugin)p).listener.onConnect();
         }
     }
 

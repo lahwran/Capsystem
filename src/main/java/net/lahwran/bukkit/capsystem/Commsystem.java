@@ -34,4 +34,17 @@ public class Commsystem extends GenericCommsystem {
         p.dispatchMessage(player, chat.substring(4));
     }
 
+    /**
+     * 
+     */
+    static void _ready(Player player)
+    {
+        for(GenericCommplugin p:instance.plugins.values())
+        {
+            ((Commplugin)p).listener.onCustomEvent(new Readyevent(player));
+        }
+        
+    }
+
+    
 }
