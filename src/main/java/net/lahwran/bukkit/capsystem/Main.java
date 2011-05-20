@@ -15,6 +15,10 @@ public class Main extends JavaPlugin {
         getCommand("@caps").setExecutor(listener);
         getCommand("@cap").setExecutor(listener);
         getCommand("@comm").setExecutor(listener);
+        
+        //this is hacky - init the static stuff in capsystem and commsystem in case it hasn't been
+        Commsystem.instance.equals(null);
+        Capsystem.instance.equals(null);
     }
     public void onDisable() {}
 
