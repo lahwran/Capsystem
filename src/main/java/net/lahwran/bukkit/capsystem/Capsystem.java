@@ -21,45 +21,50 @@ public class Capsystem extends GenericCapsystem {
     
     static Capsystem instance = new Capsystem();
     
-    public int maxLength=60;
-    public String prefix = colorchar + "0" + colorchar + "0" + colorchar + "0" + colorchar + "0";
-    public String doneprefix = prefix;
+    public Capsystem()
+    {
+        maxLength=60;
+        prefix = colorchar + "0" + colorchar + "0" + colorchar + "0" + colorchar + "0";
+        doneprefix = prefix;
+    }
+    
     private final HashMap<Player, Caplist> playercaps = new HashMap<Player, Caplist>();
     
-    public static void registerCap(String c) { instance._registerCap(c); }
-    public static void registerCap(Capability c) { instance._registerCap(c); }
-    public static void unregisterCap(String c) { instance._unregisterCap(c); }
-    public static void unregisterCap(Capability c) { instance._unregisterCap(c); }
+    public synchronized static void registerCap(String c) { instance._registerCap(c); }
+    public synchronized static void registerCap(Capability c) { instance._registerCap(c); }
+    public synchronized static void unregisterCap(String c) { instance._unregisterCap(c); }
+    public synchronized static void unregisterCap(Capability c) { instance._unregisterCap(c); }
     
-    public static boolean hasCap(Player p, String c)
+    public synchronized static boolean hasCap(Player p, String c)
     {
         return instance.playercaps.get(p) != null && instance.playercaps.get(p).capabilities.containsKey(c);
     }
 
-    public static boolean hasCap(Player p, Capability c)
+    public synchronized static boolean hasCap(Player p, Capability c)
     {
         return instance.playercaps.get(p) != null && instance.playercaps.get(p).capabilities.containsKey(c.type+c.name);
     }
 
-    public static Capability getCap(Player p, String c)
+    public synchronized static Capability getCap(Player p, String c)
     {
         return instance.playercaps.get(p) != null ? instance.playercaps.get(p).capabilities.get(c) : null;
     }
 
-    public static Caplist getCapList(Player p)
+    public synchronized static Caplist getCapList(Player p)
     {
         return instance.playercaps.get(p);
     }
 
-    public static void sendCaps(Player p)
+    public synchronized static void sendCaps(Player p)
     {
         for(String line:instance.capLines())
         {
             p.sendRawMessage(line);
         }
+        Commsystem._ready(p);
     }
 
-    static void _addCap(Player sender, String cap)
+    static synchronized void _addCap(Player sender, String cap)
     {
         Matcher match = cappattern.matcher(cap);
         if (!match.matches())
@@ -83,7 +88,7 @@ public class Capsystem extends GenericCapsystem {
             list.capabilities.put(type+name, new Capability(type, name, args));
         }
     }
-    public static void clearCaps(Player r)
+    public synchronized static void clearCaps(Player r)
     {
         instance.playercaps.remove(r);
     }

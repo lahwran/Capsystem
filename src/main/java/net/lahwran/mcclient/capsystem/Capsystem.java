@@ -17,14 +17,17 @@ public class Capsystem extends GenericCapsystem {
 
     static Capsystem instance = new Capsystem();
     
-    public int maxLength=100;
-    public String prefix = "/@caps ";
-    public String doneprefix = "/@cap ";
+    public Capsystem()
+    {
+        maxLength=100;
+        prefix = "/@caps ";
+        doneprefix = "/@cap ";
+    }
 
     private Caplist serverCaplist = null;
-    public Sendable server;
-    public boolean connected = false;
-    public boolean capableServer = false;
+    Sendable server;
+    boolean connected = false;
+    boolean capableServer = false;
     
     public static void registerCap(String c) { instance._registerCap(c); }
     public static void registerCap(Capability c) { instance._registerCap(c); }
