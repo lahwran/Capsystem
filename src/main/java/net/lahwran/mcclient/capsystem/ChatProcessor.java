@@ -57,4 +57,9 @@ public class ChatProcessor {
         }
         return false;
     }
+    
+    static {
+        Commsystem.instance.equals(null);
+        Capsystem.instance.equals(null);
+    }
 }
