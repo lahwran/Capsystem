@@ -25,7 +25,7 @@ public class Commplugin extends GenericCommplugin {
      * @param identification
      * @param listener
      */
-    public Commplugin(String identification, CustomEventListener listener)
+    Commplugin(String identification, CustomEventListener listener)
     {
         this.identification = identification;
         this.listener = listener;
@@ -66,7 +66,7 @@ public class Commplugin extends GenericCommplugin {
     }
     
     @SuppressWarnings("unchecked")
-    public void sendMessage(Player target, Commdata... commdatas)
+    public synchronized void sendMessage(Player target, Commdata... commdatas)
     {
         if(commdatas.length == 0)
             return;

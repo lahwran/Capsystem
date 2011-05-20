@@ -35,9 +35,9 @@ public class Commsystem extends GenericCommsystem {
     }
 
     /**
-     * 
+     * could be done by calling bukkit's event system ... bleh ...
      */
-    static void _ready(Player player)
+    static synchronized void _ready(Player player)
     {
         for(GenericCommplugin p:instance.plugins.values())
         {
