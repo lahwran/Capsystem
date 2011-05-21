@@ -41,7 +41,7 @@ public abstract class GenericCommplugin {
                 return null;
             }
         }
-        else if (continueagain)
+        else if (continueagain && !iscontinued)
         {
             curMessageBuffer = makeMessageBuffer(bufferid);
         }
@@ -49,7 +49,7 @@ public abstract class GenericCommplugin {
         {
             curMessageBuffer.append(message);
         }
-        else if(iscontinued)
+        else if(iscontinued && !continueagain)
         {
             curMessageBuffer.append(message);
             freeMessageBuffer(bufferid);
@@ -83,6 +83,7 @@ public abstract class GenericCommplugin {
         StringBuilder outmessage = new StringBuilder();
         for(int i = 0; i < commdatas.length; i++)
         {
+            outmessage.append(commdatas[i].typeChar());
             outmessage.append(commdatas[i].encoded());
             if (i < commdatas.length-1)
                 outmessage.append(GenericCommsystem.fieldSeparator);
@@ -96,8 +97,10 @@ public abstract class GenericCommplugin {
             thismessage.append(identification);
             if (i>0)
                 thismessage.append(GenericCommsystem.fieldSeparator);
-            thismessage.append(outmessage.substring(i * maxlength, i+1 * maxlength));
-            if (i==msgcount-1)
+            thismessage.append( outmessage.substring(i * maxlength, 
+                       Math.min(outmessage.length(), i+1 * maxlength)
+                       ) );
+            if (i<msgcount-1)
                 thismessage.append(GenericCommsystem.fieldSeparator);
             linebuilder.add(thismessage.toString());
         }

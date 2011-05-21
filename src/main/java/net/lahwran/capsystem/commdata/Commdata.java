@@ -35,7 +35,10 @@ public abstract class Commdata<T> {
                  return new Booldata(field);
 
         else
+        {
             // TODO: maybe just print to stderr? traceback is useless
-            throw new IllegalArgumentException("unhandled type character '"+type+"'");
+            System.err.println("WARNING: unhandled type character '"+type+"'");
+            return null;
+        }
     }
 }

@@ -32,7 +32,12 @@ public abstract class GenericCapsystem {
     
     protected String[] capLines()
     {
-        StringBuilder toSend = null;
+        return capLines("");
+    }
+    
+    protected String[] capLines(String extraprefix)
+    {
+        StringBuilder toSend = new StringBuilder(prefix+extraprefix);
         ArrayList<String> linebuilder = new ArrayList<String>();
         for (Capability c:caplist.capabilities.values())
         {

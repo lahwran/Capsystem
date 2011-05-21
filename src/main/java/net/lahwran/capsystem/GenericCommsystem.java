@@ -34,9 +34,12 @@ public abstract class GenericCommsystem {
         String identification = message.substring(0, 4);
         GenericCommplugin plugin = plugins.get(identification);
         if (plugin == null)
+        {
             // TODO: Maybe should just print to stderr? traceback isn't useful...
             // TODO: is this even the right place for this check?
-            throw new IllegalArgumentException("Got a message for Commplugin '"+identification+"', no such plugin (data: '"+message+"')");
+            System.err.println("Got a message for Commplugin '"+identification+"', no such plugin (data: '"+message+"')");
+            return null;
+        }
         return plugin;
     }
 

@@ -41,6 +41,7 @@ public class Commsystem extends GenericCommsystem{
     static void dispatch(String chat)
     {
         Commplugin p = (Commplugin)instance.fetchPlugin(chat);
+        if (p == null) return;
         p.dispatchMessage(chat.substring(4));
     }
 }

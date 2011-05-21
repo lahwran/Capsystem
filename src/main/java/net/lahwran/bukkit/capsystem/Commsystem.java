@@ -40,6 +40,7 @@ public class Commsystem extends GenericCommsystem {
     public static void dispatch(Player player, String chat)
     {
         Commplugin p = (Commplugin)instance.fetchPlugin(chat);
+        if (p == null) return;
         p.dispatchMessage(player, chat.substring(4));
     }
 

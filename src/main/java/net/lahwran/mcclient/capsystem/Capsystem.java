@@ -58,7 +58,10 @@ public class Capsystem extends GenericCapsystem {
     {
         Matcher match = cappattern.matcher(cap);
         if (!match.matches())
-            throw new RuntimeException("String is not a capability: "+cap);
+        {
+            System.err.println("WARNING: String is not a capability: "+cap);
+            return;
+        }
         String type = match.group(1);
         String name = match.group(2);
         String args = match.group(3);
@@ -69,7 +72,7 @@ public class Capsystem extends GenericCapsystem {
     {
         serverCaplist = new Caplist(version);
         capableServer = true;
-        for(String line:capLines())
+        for(String line:capLines("v"+Capsystem.protocolVersion))
         {
             server.send(line);
         }
