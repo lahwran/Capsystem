@@ -13,7 +13,11 @@ import net.lahwran.capsystem.GenericCommsystem;
 public class Commsystem extends GenericCommsystem{
 
     static final Commsystem instance = new Commsystem();
-    private Commsystem() { _init(Capsystem.instance); }
+    private Commsystem() 
+    { 
+        _init(Capsystem.instance);
+        commprefix = "/@comm ";
+    }
     
     public static Commplugin register(String identification, CommListener listener)
     {

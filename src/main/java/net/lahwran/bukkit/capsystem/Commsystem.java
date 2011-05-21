@@ -16,8 +16,17 @@ import net.lahwran.capsystem.GenericCommsystem;
 public class Commsystem extends GenericCommsystem {
 
     public static Commsystem instance = new Commsystem();
-    private Commsystem() { _init(Capsystem.instance); }
+    private Commsystem() 
+    {
+        _init(Capsystem.instance);
+        commprefix = Capsystem.instance.colorchar + "0" +Capsystem.instance.colorchar + "0" ;
+    }
 
+    public static Commplugin register(String identification, CustomEventListener listener)
+    {
+        return (Commplugin)instance._register(identification, listener);
+    }
+    
     @Override
     protected GenericCommplugin getNewPlugin(String identification, Object listener)
     {
