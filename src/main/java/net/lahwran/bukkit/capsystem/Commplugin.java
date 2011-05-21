@@ -29,6 +29,7 @@ public class Commplugin extends GenericCommplugin {
     {
         this.identification = identification;
         this.listener = listener;
+        maxlength = Capsystem.instance.maxLength;
     }
 
     @Override
