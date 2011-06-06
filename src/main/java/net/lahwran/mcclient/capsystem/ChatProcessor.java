@@ -41,7 +41,7 @@ public class ChatProcessor {
             }
             else
             {
-                String[] split = chat.split(" ");
+                String[] split = chat.substring(1).split(" ");
                 for (String s:split)
                 {
                     Capsystem.instance._addCap(s);
