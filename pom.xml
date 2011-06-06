@@ -14,6 +14,10 @@
               <configuration>
                   <source>1.5</source>
                   <target>1.5</target>
+                  <excludes>
+                      <exclude>*.java</exclude>
+                      <exclude>net/lahwran/mcclient/**/*</exclude>
+                  </excludes>
               </configuration>
           </plugin>
       </plugins>
