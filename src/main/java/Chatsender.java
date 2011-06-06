@@ -13,7 +13,7 @@ public class Chatsender implements Sendable {
     @Override
     public void send(String string)
     {
-        ModLoader.getMinecraftInstance().g.a(string);
+        ModLoader.getMinecraftInstance().h.a(string);
     }
 
 }
